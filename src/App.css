@@ -1,0 +1,6 @@
+.app {
+  width: min(100% - 2rem, 960px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
