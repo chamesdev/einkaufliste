@@ -1,16 +1,47 @@
-# React + Vite
+# Anleitung für die Lehrperson
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Projekt starten
 
-Currently, two official plugins are available:
+1. Projektordner öffnen.
+2. Terminal im Projektordner starten.
+3. Abhängigkeiten installieren:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+```
 
-## React Compiler
+4. Anwendung starten:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+5. Den im Terminal angezeigten Localhost-Link im Browser öffnen.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funktionen testen
+
+Die Anwendung unterstützt folgende Funktionen:
+
+- Neues Produkt eingeben
+- Datum auswählen
+- Produkt mit `Hinzufügen` zur Liste hinzufügen
+- Produkt über die Checkbox als gekauft markieren
+- Gekaufte Produkte werden durchgestrichen
+- Produkte über den `Löschen`-Button entfernen
+- Produkte mit gleichem Namen funktionieren, da jedes Produkt eine eindeutige ID besitzt
+- Die Einkaufsliste wird im `localStorage` gespeichert
+- Nach einem Neuladen der Seite bleiben die Produkte erhalten
+
+## LocalStorage testen
+
+1. Einige Produkte hinzufügen.
+2. Ein Produkt über die Checkbox als gekauft markieren.
+3. Die Seite neu laden.
+4. Prüfen, ob Produkte und Status noch vorhanden sind.
+5. Ein Produkt löschen.
+6. Die Seite erneut neu laden und prüfen, ob das gelöschte Produkt weiterhin entfernt bleibt.
+
+## Responsive Design testen
+
+Das Browserfenster verkleinern oder die Entwicklerwerkzeuge des Browsers verwenden.
+Auf kleineren Bildschirmgrössen passt sich das Formular an.
