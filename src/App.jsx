@@ -3,9 +3,9 @@ import Item from "./Item";
 import "./App.css";
 
 const startingItems = [
-  { id: crypto.randomUUID(), name: "Banana", status: false, date: "" },
-  { id: crypto.randomUUID(), name: "Apple", status: false, date: "" },
-  { id: crypto.randomUUID(), name: "Orange", status: false, date: "" },
+  { id: crypto.randomUUID(), productTitle: "Banana", status: false, date: "" },
+  { id: crypto.randomUUID(), productTitle: "Apple", status: false, date: "" },
+  { id: crypto.randomUUID(), productTitle: "Orange", status: false, date: "" },
 ];
 
 function App() {
@@ -13,14 +13,18 @@ function App() {
     const savedItems = localStorage.getItem("shopping-items");
     if (!savedItems) return startingItems;
 
-    return JSON.parse(savedItems).map((item) => ({
-      id: item.id || crypto.randomUUID(),
-      name: item.name || "",
-      status: item.status || false,
-      date: item.date || "",
-    }));
+    try {
+      return JSON.parse(savedItems).map((item) => ({
+        id: item.id || crypto.randomUUID(),
+        productTitle: item.productTitle || item.name || "",
+        status: item.status || false,
+        date: item.date || "",
+      }));
+    } catch {
+      return startingItems;
+    }
   });
-  const [item, setItem] = useState({ name: "", date: "" });
+  const [item, setItem] = useState({ productTitle: "", date: "" });
 
   useEffect(() => {
     localStorage.setItem("shopping-items", JSON.stringify(items));
@@ -39,18 +43,18 @@ function App() {
   }
 
   function addItem() {
-    if (item.name.trim() === "") return;
+    if (item.productTitle.trim() === "") return;
 
     setItems((currentItems) => [
       ...currentItems,
       {
         id: crypto.randomUUID(),
-        name: item.name.trim(),
+        productTitle: item.productTitle.trim(),
         status: false,
         date: item.date,
       },
     ]);
-    setItem({ name: "", date: "" });
+    setItem({ productTitle: "", date: "" });
   }
 
   return (
@@ -61,8 +65,10 @@ function App() {
         <input
           type="text"
           placeholder="Produktname"
-          value={item.name}
-          onChange={(e) => setItem({ ...item, name: e.target.value })}
+          value={item.productTitle}
+          onChange={(e) =>
+            setItem({ ...item, productTitle: e.target.value })
+          }
         />
         <input
           type="date"
@@ -79,7 +85,7 @@ function App() {
           <Item
             key={item.id}
             id={item.id}
-            name={item.name}
+            productTitle={item.productTitle}
             status={item.status}
             date={item.date}
             changeStatus={changeStatus}

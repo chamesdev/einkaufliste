@@ -1,4 +1,4 @@
-function Item({ id, name, status, date, changeStatus, deleteItem }) {
+function Item({ id, productTitle, status, date, changeStatus, deleteItem }) {
   return (
     <div className={`item ${status ? "bought" : ""}`}>
       <label className="item-info">
@@ -7,7 +7,7 @@ function Item({ id, name, status, date, changeStatus, deleteItem }) {
           checked={status}
           onChange={(event) => changeStatus(id, event.target.checked)}
         />
-        <span>{name}</span>
+        <span>{productTitle}</span>
         {date && <small>{date}</small>}
       </label>
       <button type="button" onClick={() => deleteItem(id)}>
