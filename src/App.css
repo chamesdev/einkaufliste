@@ -4,3 +4,48 @@
   margin: 0 auto;
   padding: 2rem 0;
 }
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.item-info span {
+  overflow-wrap: anywhere;
+}
+
+.item-info small {
+  color: #666;
+}
+
+.item.bought span {
+  text-decoration: line-through;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 1rem 0;
+  }
+
+  .add-item {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .add-item input,
+  .add-item button {
+    width: 100%;
+  }
+}
